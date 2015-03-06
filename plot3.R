@@ -21,6 +21,9 @@ EPC[,8]<-as.numeric(EPC[,8])
 EPC$DateTime<-paste(EPC$Date,EPC$Time)
 EPC$DateTime<-strptime(EPC$DateTime, format="%d/%m/%Y %H:%M:%S", tz = "GMT")
 
+# change system locale to US
+Sys.setlocale("LC_TIME", "en_US.UTF-8")
+
 # draw the plot
 plot(EPC$DateTime,EPC$Sub_metering_1,type="l",xlab="",ylab="Energy sub metering")
 lines(EPC$DateTime,EPC$Sub_metering_2,col='red')
